@@ -3,6 +3,7 @@ using System;
 using AudioPool.Repositories.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,14 +11,16 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AudioPool.WebAPI.Migrations
 {
     [DbContext(typeof(AudioPoolDbContext))]
-    partial class AudioPoolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230910120727_FixedNames")]
+    partial class FixedNames
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
 
-            modelBuilder.Entity("AlbumArtist", b =>
+            modelBuilder.Entity("AlbumsArtists", b =>
                 {
                     b.Property<int>("AlbumsId")
                         .HasColumnType("INTEGER");
@@ -29,10 +32,10 @@ namespace AudioPool.WebAPI.Migrations
 
                     b.HasIndex("ArtistsId");
 
-                    b.ToTable("AlbumArtist");
+                    b.ToTable("AlbumsArtists");
                 });
 
-            modelBuilder.Entity("ArtistGenre", b =>
+            modelBuilder.Entity("ArtistsGenres", b =>
                 {
                     b.Property<int>("ArtistsId")
                         .HasColumnType("INTEGER");
@@ -44,10 +47,10 @@ namespace AudioPool.WebAPI.Migrations
 
                     b.HasIndex("GenresId");
 
-                    b.ToTable("ArtistGenre");
+                    b.ToTable("ArtistsGenres");
                 });
 
-            modelBuilder.Entity("AudioPool.Models.Entities.Album", b =>
+            modelBuilder.Entity("AudioPool.Models.Entities.Albums", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -79,7 +82,7 @@ namespace AudioPool.WebAPI.Migrations
                     b.ToTable("Albums");
                 });
 
-            modelBuilder.Entity("AudioPool.Models.Entities.Artist", b =>
+            modelBuilder.Entity("AudioPool.Models.Entities.Artists", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -97,7 +100,7 @@ namespace AudioPool.WebAPI.Migrations
                     b.Property<DateTime?>("DateModified")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("DateOfStart")
+                    b.Property<string>("DateStarted")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ModifiedBy")
@@ -108,10 +111,10 @@ namespace AudioPool.WebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Artists");
+                    b.ToTable("Artist");
                 });
 
-            modelBuilder.Entity("AudioPool.Models.Entities.Genre", b =>
+            modelBuilder.Entity("AudioPool.Models.Entities.Genres", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -131,10 +134,10 @@ namespace AudioPool.WebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genres");
+                    b.ToTable("Genre");
                 });
 
-            modelBuilder.Entity("AudioPool.Models.Entities.Song", b =>
+            modelBuilder.Entity("AudioPool.Models.Entities.Songs", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -162,42 +165,42 @@ namespace AudioPool.WebAPI.Migrations
 
                     b.HasIndex("AlbumId");
 
-                    b.ToTable("Songs");
+                    b.ToTable("Song");
                 });
 
-            modelBuilder.Entity("AlbumArtist", b =>
+            modelBuilder.Entity("AlbumsArtists", b =>
                 {
-                    b.HasOne("AudioPool.Models.Entities.Album", null)
+                    b.HasOne("AudioPool.Models.Entities.Albums", null)
                         .WithMany()
                         .HasForeignKey("AlbumsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AudioPool.Models.Entities.Artist", null)
+                    b.HasOne("AudioPool.Models.Entities.Artists", null)
                         .WithMany()
                         .HasForeignKey("ArtistsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ArtistGenre", b =>
+            modelBuilder.Entity("ArtistsGenres", b =>
                 {
-                    b.HasOne("AudioPool.Models.Entities.Artist", null)
+                    b.HasOne("AudioPool.Models.Entities.Artists", null)
                         .WithMany()
                         .HasForeignKey("ArtistsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("AudioPool.Models.Entities.Genre", null)
+                    b.HasOne("AudioPool.Models.Entities.Genres", null)
                         .WithMany()
                         .HasForeignKey("GenresId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("AudioPool.Models.Entities.Song", b =>
+            modelBuilder.Entity("AudioPool.Models.Entities.Songs", b =>
                 {
-                    b.HasOne("AudioPool.Models.Entities.Album", "Album")
+                    b.HasOne("AudioPool.Models.Entities.Albums", "Album")
                         .WithMany("Songs")
                         .HasForeignKey("AlbumId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -206,7 +209,7 @@ namespace AudioPool.WebAPI.Migrations
                     b.Navigation("Album");
                 });
 
-            modelBuilder.Entity("AudioPool.Models.Entities.Album", b =>
+            modelBuilder.Entity("AudioPool.Models.Entities.Albums", b =>
                 {
                     b.Navigation("Songs");
                 });
