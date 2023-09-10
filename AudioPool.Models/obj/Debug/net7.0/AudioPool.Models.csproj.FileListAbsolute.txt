@@ -1,0 +1,11 @@
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Models\bin\Debug\net7.0\AudioPool.Models.deps.json
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Models\bin\Debug\net7.0\AudioPool.Models.dll
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Models\bin\Debug\net7.0\AudioPool.Models.pdb
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Models\obj\Debug\net7.0\AudioPool.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Models\obj\Debug\net7.0\AudioPool.Models.AssemblyInfoInputs.cache
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Models\obj\Debug\net7.0\AudioPool.Models.AssemblyInfo.cs
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Models\obj\Debug\net7.0\AudioPool.Models.csproj.CoreCompileInputs.cache
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Models\obj\Debug\net7.0\AudioPool.Models.dll
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Models\obj\Debug\net7.0\refint\AudioPool.Models.dll
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Models\obj\Debug\net7.0\AudioPool.Models.pdb
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Models\obj\Debug\net7.0\ref\AudioPool.Models.dll

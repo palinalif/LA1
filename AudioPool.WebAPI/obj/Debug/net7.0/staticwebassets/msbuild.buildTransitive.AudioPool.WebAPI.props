@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\AudioPool.WebAPI.props" />
+</Project>

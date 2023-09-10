@@ -1,0 +1,17 @@
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Services\bin\Debug\net7.0\AudioPool.Services.deps.json
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Services\bin\Debug\net7.0\AudioPool.Services.dll
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Services\bin\Debug\net7.0\AudioPool.Services.pdb
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Services\obj\Debug\net7.0\AudioPool.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Services\obj\Debug\net7.0\AudioPool.Services.AssemblyInfoInputs.cache
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Services\obj\Debug\net7.0\AudioPool.Services.AssemblyInfo.cs
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Services\obj\Debug\net7.0\AudioPool.Services.csproj.CoreCompileInputs.cache
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Services\obj\Debug\net7.0\AudioPool.Services.dll
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Services\obj\Debug\net7.0\refint\AudioPool.Services.dll
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Services\obj\Debug\net7.0\AudioPool.Services.pdb
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Services\obj\Debug\net7.0\ref\AudioPool.Services.dll
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Services\bin\Debug\net7.0\AudioPool.Models.dll
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Services\bin\Debug\net7.0\AudioPool.Repositories.dll
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Services\bin\Debug\net7.0\AudioPool.Models.pdb
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Services\bin\Debug\net7.0\AudioPool.Repositories.pdb
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Services\obj\Debug\net7.0\AudioPool.Services.csproj.AssemblyReference.cache
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.Services\obj\Debug\net7.0\AudioPool.Services.csproj.CopyComplete
