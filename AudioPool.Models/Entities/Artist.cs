@@ -9,7 +9,7 @@ namespace AudioPool.Models.Entities
         public string? Name { get; set; }
         public string? Bio { get; set; }
         public string? CoverImageUrl { get; set; }
-        public string? DateOfStart { get; set; }
+        public DateTime? DateOfStart { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime? DateModified { get; set; }
         public string? ModifiedBy { get; set; }

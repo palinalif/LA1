@@ -1,6 +1,6 @@
 namespace AudioPool.Models.DTOs
 {
-    public class SongDTO
+    public class SongDTO : HyperMediaModel
     {
         public int id;
         public string? name;
