@@ -1,9 +1,9 @@
 using AudioPool.Models.DTOs;
 using AudioPool.Models.InputModels;
 
-namespace AudioPool.Repositories.Interfaces
+namespace AudioPool.Services.Interfaces
 {
-    public interface IAlbumRepository
+    public interface IAlbumService
     {
         int StoreAlbum(AlbumInputModel album);
         AlbumDetailsDTO ReadAlbum(int id);
