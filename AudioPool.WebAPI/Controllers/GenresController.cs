@@ -3,7 +3,6 @@ using AudioPool.Services.Implementations;
 using AudioPool.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace AudioPool.WebAPI.Controllers;
 
 [ApiController]
