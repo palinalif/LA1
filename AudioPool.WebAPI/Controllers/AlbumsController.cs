@@ -1,4 +1,6 @@
+using AudioPool.Models.Entities;
 using AudioPool.Models.InputModels;
+using AudioPool.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AudioPool.WebAPI.Controllers;
@@ -7,26 +9,34 @@ namespace AudioPool.WebAPI.Controllers;
 [Route("[controller]")]
 public class AlbumsController : ControllerBase
 {
-    [HttpGet("{id}")]
+    private readonly IAlbumService _albumService;
+    public AlbumsController(IAlbumService albumService)
+    {
+        _albumService = albumService;
+    }
+
+    [HttpGet("{id}", Name = "ReadAlbum")]
     public IActionResult GetAlbumById(int id) 
     {
-        return Ok();
+        return Ok(_albumService.ReadAlbum(id));
     }
     [HttpGet("{id}/songs")]
     public IActionResult GetSongsOnAlbum(int id) 
     {
-        return Ok();
+        return Ok(_albumService.ListSongsOnAlbum(id));
     }
 
     // Authorized routes
     [HttpPost("")]
     public IActionResult CreateNewAlbum([FromBody] AlbumInputModel album)
     {
-        return Ok();
+        var newAlbumId = _albumService.StoreAlbum(album);
+        return CreatedAtRoute("ReadAlbum", new { albumId = newAlbumId });
     }
     [HttpDelete("{id}")]
     public IActionResult DeleteAlbumById(int id)
     {
-        return Ok();
+        _albumService.RemoveAlbum(id);
+        return NoContent();
     }
 }

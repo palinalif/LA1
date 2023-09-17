@@ -1,4 +1,6 @@
 using AudioPool.Models.InputModels;
+using AudioPool.Services.Implementations;
+using AudioPool.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -8,21 +10,28 @@ namespace AudioPool.WebAPI.Controllers;
 [Route("[controller]")]
 public class GenresController : ControllerBase
 {
+    private readonly IGenreService _genreService;
+    public GenresController(IGenreService genreService)
+    {
+        _genreService = genreService;
+    }
+
     [HttpGet("")]
     public IActionResult GetAllGenres() 
     {
-        return Ok();
+        return Ok(_genreService.ListGenres());
     }
-    [HttpGet("{id}")]
+    [HttpGet("{id}", Name = "ReadGenre")]
     public IActionResult GetGenreById(int id) 
     {
-        return Ok();
+        return Ok(_genreService.ReadGenre(id));
     }
 
     // Authorized endpoints
     [HttpPost("")]
     public IActionResult CreateNewGenre([FromBody] GenreInputModel genre)
     {
-        return Ok();
+        var newGenreId = _genreService.StoreGenre(genre);
+        return CreatedAtRoute("ReadGenre", new { genreId = newGenreId });
     }
 }

@@ -1,4 +1,5 @@
 using AudioPool.Models.InputModels;
+using AudioPool.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AudioPool.WebAPI.Controllers;
@@ -7,17 +8,24 @@ namespace AudioPool.WebAPI.Controllers;
 [Route("[controller]")]
 public class SongsController : ControllerBase
 {
-    [HttpGet("{id}")]
+    private readonly ISongService _songService;
+    public SongsController(ISongService songService)
+    {
+        _songService = songService;
+    }
+
+    [HttpGet("{id}", Name = "ReadSong")]
     public IActionResult GetSongById(int id) 
     {
-        return Ok();
+        return Ok(_songService.ReadSong(id));
     }
 
     // Authorized routes
     [HttpPost("")]
     public IActionResult CreateNewSong([FromBody] SongInputModel song)
     {
-        return Ok();
+        var newSongId = _songService.StoreSong(song);
+        return CreatedAtRoute("ReadSong", new { songId = newSongId });
     }
     [HttpPut("{id}")]
     public IActionResult UpdateSong(int id, [FromBody] SongInputModel song)

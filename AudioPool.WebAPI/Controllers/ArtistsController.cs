@@ -1,4 +1,5 @@
 using AudioPool.Models.InputModels;
+using AudioPool.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AudioPool.WebAPI.Controllers;
@@ -7,36 +8,45 @@ namespace AudioPool.WebAPI.Controllers;
 [Route("[controller]")]
 public class ArtistsController : ControllerBase
 {
+    private readonly IArtistService _artistService;
+    public ArtistsController(IArtistService artistService)
+    {
+        _artistService = artistService;
+    }
+
     [HttpGet("")]
     public IActionResult GetAllArtists([FromQuery] int pageSize ) 
     {
-        return Ok();
+        return Ok(_artistService.ListArtists());
     }
-    [HttpGet("{id}")]
+    [HttpGet("{id}", Name = "ReadArtist")]
     public IActionResult GetArtistById(int id) 
     {
-        return Ok();
+        return Ok(_artistService.ReadArtist(id));
     }
     [HttpGet("{id}/albums")]
     public IActionResult GetAllArtistAlbums(int id) 
     {
-        return Ok();
+        return Ok(_artistService.ListArtistAlbums(id));
     }
 
     // Authorized routes
     [HttpPost("")]
     public IActionResult CreateNewArtist([FromBody] ArtistInputModel artist)
     {
-        return Ok();
+        var newArtistId = _artistService.StoreArtist(artist);
+        return CreatedAtRoute("ReadArtist", new { artistId = newArtistId });
     }
     [HttpPut("{id}")]
     public IActionResult UpdateArtist(int id, [FromBody] ArtistInputModel artist)
     {
-        return Ok();
+        _artistService.UpdateArtist(id, artist);
+        return NoContent();
     }
     [HttpPatch("{artistId}/genres/{genreId}")]
     public IActionResult AddGenreToArtist(int artistId, int genreId) 
     {
-        return Ok();
+        _artistService.AddGenreToArtist(artistId, genreId);
+        return NoContent();
     }
 }
