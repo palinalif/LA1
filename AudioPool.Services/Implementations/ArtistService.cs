@@ -10,7 +10,7 @@ namespace AudioPool.Services.Implementations
     {
         private readonly IArtistRepository _artistRepository;
 
-        public ArtistService(ArtistRepository artistRepository)
+        public ArtistService(IArtistRepository artistRepository)
         {
             _artistRepository = artistRepository;
         }

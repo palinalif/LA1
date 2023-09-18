@@ -10,7 +10,7 @@ namespace AudioPool.Services.Implementations
     {
         private readonly ISongRepository _songRepository;
 
-        public SongService(SongRepository songRepository)
+        public SongService(ISongRepository songRepository)
         {
             _songRepository = songRepository;
         }
