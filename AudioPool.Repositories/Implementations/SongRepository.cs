@@ -5,6 +5,7 @@ using AudioPool.Models.Entities;
 using AudioPool.Models.InputModels;
 using AudioPool.Repositories.Contexts;
 using AudioPool.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace AudioPool.Repositories.Implementations
 {
@@ -17,7 +18,7 @@ namespace AudioPool.Repositories.Implementations
         }
         public SongDetailsDTO ReadSong(int id)
         {
-            var song = _dbContext.Songs.Find(id);
+            var song = _dbContext.Songs.Include(s => s.Album).FirstOrDefault(s => s.Id == id);
             if (song == null) { throw new KeyNotFoundException(); }
             var songAlbum = new AlbumDTO
             {

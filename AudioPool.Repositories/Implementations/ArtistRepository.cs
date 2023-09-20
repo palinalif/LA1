@@ -31,7 +31,7 @@ namespace AudioPool.Repositories.Implementations
 
         public IEnumerable<AlbumDTO> ListArtistAlbums(int id)
         {
-            var artist = _dbContext.Artists.Find(id);
+            var artist = _dbContext.Artists.Include(a => a.Albums).FirstOrDefault(a => a.Id == id);
             if (artist == null) { throw new KeyNotFoundException(); }
             return artist.Albums.Select(a => new AlbumDTO
             {
@@ -56,21 +56,21 @@ namespace AudioPool.Repositories.Implementations
 
         public ArtistDetailsDTO ReadArtist(int id)
         {
-            var artist = _dbContext.Artists.Find(id);
+            var artist = _dbContext.Artists.Include(a => a.Albums).Include(a => a.Genres).FirstOrDefault(a => a.Id == id);
             if (artist == null) { throw new KeyNotFoundException(); }
-            var artistAlbums = artist.Albums.Select(a => new AlbumDTO
+            var artistAlbums = artist.Albums?.Select(a => new AlbumDTO
             {
                 id = a.Id,
                 name = a.Name,
                 releaseDate = a.ReleaseDate,
                 coverImageUrl = a.CoverImageUrl,
                 description = a.Description
-            });
-            var artistGenres = artist.Genres.Select(g => new GenreDTO
+            }) ?? Enumerable.Empty<AlbumDTO>();
+            var artistGenres = artist.Genres?.Select(g => new GenreDTO
             {
                 id = g.Id,
                 name = g.Name
-            });
+            }) ?? Enumerable.Empty<GenreDTO>();;
             return new ArtistDetailsDTO
             {
                 id = artist.Id,

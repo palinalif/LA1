@@ -30,6 +30,7 @@ public class SongsController : ControllerBase
     [HttpPut("{id}")]
     public IActionResult UpdateSong(int id, [FromBody] SongInputModel song)
     {
+        _songService.UpdateSong(id, song);
         return Ok();
     }
     [HttpDelete("{id}")]
