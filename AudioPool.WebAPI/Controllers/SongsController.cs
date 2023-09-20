@@ -36,6 +36,7 @@ public class SongsController : ControllerBase
     [HttpDelete("{id}")]
     public IActionResult DeleteSong(int id)
     {
+        _songService.RemoveSong(id);
         return Ok();
     }
 }

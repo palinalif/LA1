@@ -19,7 +19,7 @@ namespace AudioPool.Repositories.Implementations
         
         public void AddGenreToArtist(int id, int genreId)
         {
-            var artist = _dbContext.Artists.Find(id);
+            var artist = _dbContext.Artists.Include(a => a.Genres).FirstOrDefault(a => a.Id == id);
             if (artist == null) { throw new KeyNotFoundException(); }
 
             // find genre with that id
