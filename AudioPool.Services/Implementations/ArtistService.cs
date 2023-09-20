@@ -32,7 +32,9 @@ namespace AudioPool.Services.Implementations
 
         public ArtistDetailsDTO ReadArtist(int id)
         {
-            return _artistRepository.ReadArtist(id);
+            var artist = _artistRepository.ReadArtist(id);
+            if (artist == null) { return null; }
+            return artist;
         }
 
         public int StoreArtist(ArtistInputModel artist)

@@ -2,10 +2,10 @@ namespace AudioPool.Models.DTOs
 {
     public class SongDetailsDTO : HyperMediaModel
     {
-        public int id;
-        public string? name;
-        public TimeSpan duration;
-        public AlbumDTO album;
-        public int TrackNumberOnAlbum;
+        public int id { get; set; }
+        public string? name { get; set; }
+        public TimeSpan duration { get; set; }
+        public AlbumDTO album { get; set; }
+        public int TrackNumberOnAlbum { get; set; }
     }
 }

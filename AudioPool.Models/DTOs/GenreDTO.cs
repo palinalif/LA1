@@ -3,7 +3,7 @@ namespace AudioPool.Models.DTOs
 {
     public class GenreDTO : HyperMediaModel
     {
-        public int id;
-        public string? name;
+        public int id { get; set; }
+        public string? name { get; set; }
     }
 }   

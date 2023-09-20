@@ -18,7 +18,12 @@ public class GenresController : ControllerBase
     [HttpGet("")]
     public IActionResult GetAllGenres() 
     {
-        return Ok(_genreService.ListGenres());
+        var genres = _genreService.ListGenres().ToList();
+        foreach (var genre in genres)
+        {
+            Console.WriteLine($"Genre ID: {genre.id}, Name: {genre.name}");
+        }
+        return Ok(genres);
     }
     [HttpGet("{id}", Name = "ReadGenre")]
     public IActionResult GetGenreById(int id) 

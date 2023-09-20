@@ -19,10 +19,11 @@ namespace AudioPool.Repositories.Implementations
 
         public IEnumerable<GenreDTO> ListGenres()
         {
-            return _dbContext.Genres.Select(g => new GenreDTO{
+            var genres =_dbContext.Genres.Select(g => new GenreDTO{
                 id = g.Id,
                 name = g.Name
-            });
+            }).ToList();
+            return genres;
         }
 
         public GenreDetailsDTO ReadGenre(int id)
