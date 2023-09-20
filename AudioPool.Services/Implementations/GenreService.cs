@@ -26,6 +26,7 @@ namespace AudioPool.Services.Implementations
         {
             var genre = _genreRepository.ReadGenre(id);
             if (genre == null) { return null; }
+            Console.WriteLine($"Genre ID: {genre.id} Name: {genre.name}");
             return genre;
         }
 

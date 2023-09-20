@@ -3,6 +3,7 @@ using AudioPool.Models.Entities;
 using AudioPool.Models.InputModels;
 using AudioPool.Repositories.Contexts;
 using AudioPool.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace AudioPool.Repositories.Implementations
 {
@@ -28,24 +29,23 @@ namespace AudioPool.Repositories.Implementations
 
         public AlbumDetailsDTO ReadAlbum(int id)
         {
-            var album = _dbContext.Albums.Find(id);
+            var album = _dbContext.Albums.Include(a => a.Songs).Include(a => a.Artists).FirstOrDefault(a => a.Id == id);
+
             if (album == null) { throw new KeyNotFoundException(); }
-            var albumSongs = album.Songs.Select(s => new SongDTO
+            var albumSongs = album.Songs?.Select(s => new SongDTO
             {
                 id = s.Id,
                 name = s.Name,
                 duration = s.Duration
-            });
-            var albumArtists = album.Artists.Select(a => new ArtistDTO
+            }) ?? Enumerable.Empty<SongDTO>();
+            var albumArtists = album.Artists?.Select(a => new ArtistDTO
             {
                 id = a.Id,
                 name = a.Name,
                 bio = a.Bio,
                 coverImageUrl = a.CoverImageUrl,
                 dateOfStart = a.DateOfStart
-            });
-
-            if (album == null) { throw new KeyNotFoundException(); }
+            }) ?? Enumerable.Empty<ArtistDTO>();
             return new AlbumDetailsDTO
             {
                 id = album.Id,

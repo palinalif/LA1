@@ -20,7 +20,9 @@ namespace AudioPool.Services.Implementations
 
         public AlbumDetailsDTO ReadAlbum(int id)
         {
-            return _albumRepository.ReadAlbum(id);
+            var album = _albumRepository.ReadAlbum(id);
+            if (album == null) { return null; }
+            return album;
         }
 
         public void RemoveAlbum(int id)

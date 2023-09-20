@@ -35,7 +35,7 @@ public class ArtistsController : ControllerBase
     public IActionResult CreateNewArtist([FromBody] ArtistInputModel artist)
     {
         var newArtistId = _artistService.StoreArtist(artist);
-        return CreatedAtRoute("ReadArtist", new { artistId = newArtistId });
+        return CreatedAtRoute("ReadArtist", new { id = newArtistId }, null);
     }
     [HttpPut("{id}")]
     public IActionResult UpdateArtist(int id, [FromBody] ArtistInputModel artist)

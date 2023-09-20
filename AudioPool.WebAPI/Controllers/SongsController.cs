@@ -25,7 +25,7 @@ public class SongsController : ControllerBase
     public IActionResult CreateNewSong([FromBody] SongInputModel song)
     {
         var newSongId = _songService.StoreSong(song);
-        return CreatedAtRoute("ReadSong", new { songId = newSongId });
+        return CreatedAtRoute("ReadSong", new { id = newSongId }, null);    
     }
     [HttpPut("{id}")]
     public IActionResult UpdateSong(int id, [FromBody] SongInputModel song)

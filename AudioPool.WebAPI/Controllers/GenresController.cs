@@ -25,7 +25,7 @@ public class GenresController : ControllerBase
         }
         return Ok(genres);
     }
-    [HttpGet("{id}", Name = "ReadGenre")]
+    [HttpGet("{id:int}", Name = "ReadGenre")]
     public IActionResult GetGenreById(int id) 
     {
         return Ok(_genreService.ReadGenre(id));
@@ -36,6 +36,6 @@ public class GenresController : ControllerBase
     public IActionResult CreateNewGenre([FromBody] GenreInputModel genre)
     {
         var newGenreId = _genreService.StoreGenre(genre);
-        return CreatedAtRoute("ReadGenre", new { genreId = newGenreId });
+        return CreatedAtRoute("ReadGenre", new { id = newGenreId }, null);
     }
 }
