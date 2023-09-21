@@ -31,18 +31,21 @@ public class ArtistsController : ControllerBase
     }
 
     // Authorized routes
+    [TokenAuthorization]
     [HttpPost("")]
     public IActionResult CreateNewArtist([FromBody] ArtistInputModel artist)
     {
         var newArtistId = _artistService.StoreArtist(artist);
         return CreatedAtRoute("ReadArtist", new { id = newArtistId }, null);
     }
+    [TokenAuthorization]
     [HttpPut("{id}")]
     public IActionResult UpdateArtist(int id, [FromBody] ArtistInputModel artist)
     {
         _artistService.UpdateArtist(id, artist);
         return NoContent();
     }
+    [TokenAuthorization]
     [HttpPatch("{artistId}/genres/{genreId}")]
     public IActionResult AddGenreToArtist(int artistId, int genreId) 
     {

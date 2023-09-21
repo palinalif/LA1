@@ -27,12 +27,14 @@ public class AlbumsController : ControllerBase
     }
 
     // Authorized routes
+    [TokenAuthorization]
     [HttpPost("")]
     public IActionResult CreateNewAlbum([FromBody] AlbumInputModel album)
     {
         var newAlbumId = _albumService.StoreAlbum(album);
         return CreatedAtRoute("ReadAlbum", new { id = newAlbumId }, null);
     }
+    [TokenAuthorization]
     [HttpDelete("{id}")]
     public IActionResult DeleteAlbumById(int id)
     {

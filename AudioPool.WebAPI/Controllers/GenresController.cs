@@ -31,7 +31,9 @@ public class GenresController : ControllerBase
         return Ok(_genreService.ReadGenre(id));
     }
 
+
     // Authorized endpoints
+    [TokenAuthorization]
     [HttpPost("")]
     public IActionResult CreateNewGenre([FromBody] GenreInputModel genre)
     {

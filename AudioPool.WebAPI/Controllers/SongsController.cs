@@ -21,18 +21,21 @@ public class SongsController : ControllerBase
     }
 
     // Authorized routes
+    [TokenAuthorization]
     [HttpPost("")]
     public IActionResult CreateNewSong([FromBody] SongInputModel song)
     {
         var newSongId = _songService.StoreSong(song);
         return CreatedAtRoute("ReadSong", new { id = newSongId }, null);    
     }
+    [TokenAuthorization]
     [HttpPut("{id}")]
     public IActionResult UpdateSong(int id, [FromBody] SongInputModel song)
     {
         _songService.UpdateSong(id, song);
         return Ok();
     }
+    [TokenAuthorization]
     [HttpDelete("{id}")]
     public IActionResult DeleteSong(int id)
     {
