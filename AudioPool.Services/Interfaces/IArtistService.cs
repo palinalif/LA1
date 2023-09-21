@@ -1,3 +1,4 @@
+using AudioPool.Models;
 using AudioPool.Models.DTOs;
 using AudioPool.Models.InputModels;
 
@@ -9,7 +10,7 @@ namespace AudioPool.Services.Interfaces
         ArtistDetailsDTO ReadArtist(int id);
         void UpdateArtist(int id, ArtistInputModel updatedArtist);
         void AddGenreToArtist(int id, int genreId);
-        IEnumerable<ArtistDTO> ListArtists();
+        Envelope<ArtistDTO> ListArtists(int pageNumber, int pageSize);
         IEnumerable<AlbumDTO> ListArtistAlbums(int id);
     }
 }

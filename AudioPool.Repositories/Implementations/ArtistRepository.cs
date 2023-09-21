@@ -1,3 +1,5 @@
+using System.Text;
+using AudioPool.Models;
 using AudioPool.Models.DTOs;
 using AudioPool.Models.Entities;
 using AudioPool.Models.InputModels;
@@ -16,7 +18,6 @@ namespace AudioPool.Repositories.Implementations
         {
             _dbContext = dbContext;
         }
-        
         public void AddGenreToArtist(int id, int genreId)
         {
             var artist = _dbContext.Artists.Include(a => a.Genres).FirstOrDefault(a => a.Id == id);
@@ -43,19 +44,22 @@ namespace AudioPool.Repositories.Implementations
             });
         }
 
-        public IEnumerable<ArtistDTO> ListArtists()
+        public Envelope<ArtistDTO> ListArtists(int pageNumber, int pageSize)
         {
-            return _dbContext.Artists.Select(a => new ArtistDTO{
+            var items = _dbContext.Artists.Select(a => new ArtistDTO{
                 id = a.Id,
                 name = a.Name,
                 bio = a.Bio,
                 coverImageUrl = a.CoverImageUrl,
                 dateOfStart = a.DateOfStart
-            });
+            }).Skip((pageNumber - 1) * pageSize).Take(pageSize);
+
+            return new Envelope<ArtistDTO>(pageNumber, pageSize, items);
         }
 
         public ArtistDetailsDTO ReadArtist(int id)
         {
+
             var artist = _dbContext.Artists.Include(a => a.Albums).Include(a => a.Genres).FirstOrDefault(a => a.Id == id);
             if (artist == null) { throw new KeyNotFoundException(); }
             var artistAlbums = artist.Albums?.Select(a => new AlbumDTO

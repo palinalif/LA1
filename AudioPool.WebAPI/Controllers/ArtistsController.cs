@@ -15,9 +15,9 @@ public class ArtistsController : ControllerBase
     }
 
     [HttpGet("")]
-    public IActionResult GetAllArtists([FromQuery] int pageSize ) 
+    public IActionResult GetAllArtists([FromQuery] int pageSize = 25, [FromQuery] int pageNumber = 1) 
     {
-        return Ok(_artistService.ListArtists());
+        return Ok(_artistService.ListArtists(pageNumber, pageSize));
     }
     [HttpGet("{id}", Name = "ReadArtist")]
     public IActionResult GetArtistById(int id) 

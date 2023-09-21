@@ -1,3 +1,4 @@
+using AudioPool.Models;
 using AudioPool.Models.DTOs;
 using AudioPool.Models.InputModels;
 using AudioPool.Repositories.Implementations;
@@ -25,9 +26,9 @@ namespace AudioPool.Services.Implementations
             return _artistRepository.ListArtistAlbums(id);
         }
 
-        public IEnumerable<ArtistDTO> ListArtists()
+        public Envelope<ArtistDTO> ListArtists(int pageNumber, int pageSize)
         {
-            return _artistRepository.ListArtists();
+            return _artistRepository.ListArtists(pageNumber, pageSize);
         }
 
         public ArtistDetailsDTO ReadArtist(int id)

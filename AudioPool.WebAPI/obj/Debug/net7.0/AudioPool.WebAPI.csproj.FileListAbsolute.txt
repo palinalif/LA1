@@ -73,3 +73,4 @@ C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.WebAPI\obj\Debug\net
 C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.WebAPI\obj\Debug\net7.0\AudioPool.WebAPI.pdb
 C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.WebAPI\obj\Debug\net7.0\AudioPool.WebAPI.genruntimeconfig.cache
 C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.WebAPI\obj\Debug\net7.0\ref\AudioPool.WebAPI.dll
+C:\Users\kolla\OneDrive\Documents\School\VEFT\LA1\AudioPool.WebAPI\bin\Debug\net7.0\FizzWare.NBuilder.dll
