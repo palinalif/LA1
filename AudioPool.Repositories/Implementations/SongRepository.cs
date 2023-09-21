@@ -29,13 +29,23 @@ namespace AudioPool.Repositories.Implementations
                 description = song.Album.Description
             };
 
+            // Find the index of the song in the AlbumDetailsDTO's Songs list
+            var album = _dbContext.Albums.Include(a => a.Songs).FirstOrDefault(a => a.Id == song.Album.Id);
+            int trackNumber = 0;
+
+            if (album != null)
+            {
+                var orderedSongs = album.Songs.OrderBy(s => s.Id).ToList();
+                trackNumber = orderedSongs.ToList().FindIndex(s => s.Id == id);
+            }
+
             return new SongDetailsDTO
             {
                 id = song.Id,
                 name = song.Name,
                 duration = song.Duration,
                 album = songAlbum,
-                TrackNumberOnAlbum = 0 // TOOD: Implement this properly
+                TrackNumberOnAlbum = trackNumber+1
             };
         }
 
